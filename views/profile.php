@@ -4,12 +4,19 @@
 
     <div class="card">
 
-        <h1>Inscription</h1>
+        <h1>Mon profil</h1>
 
-        <?php if(isset($error)): ?>
+        <?php if(isset($message)): ?>
 
-            <p style="color:red;">
-                <?= htmlspecialchars($error); ?>
+            <p
+                style="
+                    color:green;
+                    font-weight:bold;
+                "
+            >
+
+                <?= htmlspecialchars($message); ?>
+
             </p>
 
         <?php endif; ?>
@@ -21,6 +28,7 @@
             <input
                 type="text"
                 name="nom"
+                value="<?= htmlspecialchars($user['nom'] ?? ''); ?>"
                 required
             >
 
@@ -29,6 +37,7 @@
             <input
                 type="text"
                 name="prenom"
+                value="<?= htmlspecialchars($user['prenom'] ?? ''); ?>"
                 required
             >
 
@@ -37,14 +46,7 @@
             <input
                 type="text"
                 name="telephone"
-                required
-            >
-
-            <label>Adresse :</label>
-
-            <input
-                type="text"
-                name="adresse"
+                value="<?= htmlspecialchars($user['telephone'] ?? ''); ?>"
                 required
             >
 
@@ -53,27 +55,21 @@
             <input
                 type="text"
                 name="ville"
-                required
+                value="<?= htmlspecialchars($user['ville'] ?? ''); ?>"
             >
 
-            <label>Email :</label>
+            <label>Adresse :</label>
 
             <input
-                type="email"
-                name="email"
-                required
-            >
-
-            <label>Mot de passe :</label>
-
-            <input
-                type="password"
-                name="password"
-                required
+                type="text"
+                name="adresse_postale"
+                value="<?= htmlspecialchars($user['adresse_postale'] ?? ''); ?>"
             >
 
             <button type="submit">
-                S'inscrire
+
+                Mettre à jour
+
             </button>
 
         </form>

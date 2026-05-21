@@ -4,15 +4,7 @@
 
     <div class="card">
 
-        <h1>Inscription</h1>
-
-        <?php if(isset($error)): ?>
-
-            <p style="color:red;">
-                <?= htmlspecialchars($error); ?>
-            </p>
-
-        <?php endif; ?>
+        <h1>Ajouter un employé</h1>
 
         <form method="POST">
 
@@ -29,6 +21,14 @@
             <input
                 type="text"
                 name="prenom"
+                required
+            >
+
+            <label>Email :</label>
+
+            <input
+                type="email"
+                name="email"
                 required
             >
 
@@ -56,14 +56,6 @@
                 required
             >
 
-            <label>Email :</label>
-
-            <input
-                type="email"
-                name="email"
-                required
-            >
-
             <label>Mot de passe :</label>
 
             <input
@@ -73,7 +65,9 @@
             >
 
             <button type="submit">
-                S'inscrire
+
+                Ajouter l'employé
+
             </button>
 
         </form>

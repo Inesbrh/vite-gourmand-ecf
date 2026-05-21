@@ -1,56 +1,161 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Accueil</title>
-</head>
-<body>
-    <?php require_once __DIR__ . '/layout/header.php'; ?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 
-    <h1>Bienvenue chez Vite Gourmand</h1>
+<!-- HERO -->
 
-    <section>
-        <h2>Julie et José, vos artisans du goût à Bordeaux</h2>
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Vite Gourmand</h1>
+
         <p>
-            Nous sommes Julie et José, et depuis 25 ans à Bordeaux,
-            nous avons à cœur de faire de vos repas des moments mémorables.<br>
-            Que ce soit pour un simple repas en famille ou pour des fêtes comme Noël ou Pâques,<br>
-            nous créons pour vous des menus gourmands,
-            toujours en évolution, pour surprendre vos papilles et ravir vos convives.<br>
-            Chaque plat que nous préparons est pensé avec passion, goût et authenticité.<br>
-            Notre objectif ? Faire de chaque bouchée un instant de plaisir et de partage.<br>
-            Nous serions ravis de participer à vos moments de fête et de transformer vos repas en souvenirs inoubliables.
+            Des menus gourmands pour tous vos événements.
         </p>
-    </section>
 
-    <section>
-        <h2>Notre savoir-faire à votre service</h2>
-        <p>
-            Chez Vite & Gourmand, nous combinons 25 ans d’expérience avec une passion constante pour la gastronomie.<br>
-            Chaque événement que nous accompagnons bénéficie de notre rigueur, notre organisation et notre sens du détail,<br>
-            afin que tout se déroule parfaitement, de la préparation à la dégustation.<br>
-            Nous veillons à ce que chaque plat soit non seulement délicieux, mais également présenté avec soin.<br>
-            Notre équipe met un point d’honneur à allier créativité, qualité et fiabilité,
-            pour que vous puissiez profiter de vos moments en toute sérénité,<br>en sachant que tout est entre de bonnes mains.
-        </p>
-    </section>
+        <a href="?page=menu">
 
-    <section>
-        <h2>Avis clients</h2>
+            <button>
+                Découvrir nos menus
+            </button>
 
-        <?php if (!empty($avis)): ?>
-            <?php foreach($avis as $a): ?>
-                <div style="margin-bottom:15px;">
-                    <strong>Note : <?= htmlspecialchars($a['note']); ?>/5</strong>
-                    <p><?= htmlspecialchars($a['description']); ?></p>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Aucun avis pour le moment.</p>
-        <?php endif; ?>
+        </a>
 
-    </section>
+    </div>
 
-    <?php require_once __DIR__ . '/layout/footer.php'; ?>
+</section>
 
-</body>
-</html>
+<!-- CONTENU -->
+
+<div class="container">
+
+    <!-- PRESENTATION -->
+
+    <div class="card savoir-faire">
+
+        <div class="savoir-image">
+
+            <img
+                src="/vite-gourmand-ecf/public/assets/img/table.jpeg"
+                alt="Savoir faire"
+            >
+
+        </div>
+
+        <div class="savoir-text">
+
+            <h2>
+                Notre savoir-faire
+            </h2>
+
+            <br>
+
+            <p>
+                Vite Gourmand vous propose des menus raffinés,
+                préparés avec des produits frais pour tous vos
+                événements privés et professionnels.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- MENUS POPULAIRES -->
+
+    <h2 style="margin-top:40px;">
+        Menus populaires
+    </h2>
+
+    <div class="home-menus">
+
+        <div class="card">
+
+            <img
+                src="/vite-gourmand-ecf/public/assets/img/menu1.jpg"
+                alt="Menu"
+            >
+
+            <br><br>
+
+            <h3>Menu Prestige</h3>
+
+            <p>
+                Une sélection haut de gamme pour vos événements.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <img
+                src="/vite-gourmand-ecf/public/assets/img/menu2.jpg"
+                alt="Menu"
+            >
+
+            <br><br>
+
+            <h3>Menu Famille</h3>
+
+            <p>
+                Un menu généreux pour partager un moment convivial.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <img
+                src="/vite-gourmand-ecf/public/assets/img/menu3.jpg"
+                alt="Menu"
+            >
+
+            <br><br>
+
+            <h3>Menu Mariage</h3>
+
+            <p>
+                Élégance et gourmandise pour le plus beau jour.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- AVIS -->
+
+    <h2 style="margin-top:40px;">
+        Avis clients
+    </h2>
+
+    <?php if(!empty($avis)): ?>
+
+        <?php foreach($avis as $unAvis): ?>
+
+            <div class="card">
+
+                <p>
+                    <?= str_repeat('⭐', $unAvis['note']); ?>
+                </p>
+
+                <p>
+                    <?= htmlspecialchars($unAvis['description']); ?>
+                </p>
+
+            </div>
+
+        <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <div class="card">
+
+            <p>
+                Aucun avis pour le moment.
+            </p>
+
+        </div>
+
+    <?php endif; ?>
+
+</div>
+
+<?php require_once __DIR__ . '/layout/footer.php'; ?>

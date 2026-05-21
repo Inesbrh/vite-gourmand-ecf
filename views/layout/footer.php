@@ -1,28 +1,42 @@
+<?php
+
+require_once __DIR__ . '/../../models/Horaire.php';
+
+$horaire = Horaire::get();
+
+?>
+
 <hr>
 
 <footer>
 
-    <h3>Horaires</h3>
+    <div class="container">
 
-    <p>Lundi : 09h - 18h</p>
-    <p>Mardi : 09h - 18h</p>
-    <p>Mercredi : 09h - 18h</p>
-    <p>Jeudi : 09h - 18h</p>
-    <p>Vendredi : 09h - 22h</p>
-    <p>Samedi : 10h - 22h</p>
-    <p>Dimanche : 10h - 17h</p>
+        <h3>Horaires</h3>
 
-    <br>
+        <p style="white-space: pre-line;">
 
-    <a href="?page=mentions-legales">
-        Mentions légales
-    </a>
+            <?= htmlspecialchars($horaire['contenu'] ?? ''); ?>
 
-    |
+        </p>
 
-    <a href="?page=cgv">
-        Conditions générales de vente
-    </a>
+        <br>
+
+        <a href="?page=mentions-legales">
+
+            Mentions légales
+
+        </a>
+
+        |
+
+        <a href="?page=cgv">
+
+            Conditions générales de vente
+
+        </a>
+
+    </div>
 
 </footer>
 

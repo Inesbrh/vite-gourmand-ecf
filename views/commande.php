@@ -1,29 +1,176 @@
 <?php require_once __DIR__ . '/layout/header.php'; ?>
 
-<h1>Commander un menu</h1>
+<div class="container">
 
-<form method="POST">
+    <div class="card">
 
-    <label>Date prestation :</label><br>
-    <input type="date" name="date_prestation" required><br><br>
+        <h1>Commander un menu</h1>
 
-    <label>Heure livraison :</label><br>
-    <input type="time" name="heure_livraison" required><br><br>
+        <!-- INFOS CLIENT -->
 
-    <label>Nombre de personnes :</label><br>
-    <input type="number" name="nombre_personne" required><br><br>
+        <h2>Informations client</h2>
 
-    <label>Prêt matériel :</label><br>
+        <input
+            type="text"
+            value="<?= htmlspecialchars($user['nom']); ?>"
+            disabled
+        >
 
-    <select name="pret_materiel">
-        <option value="1">Oui</option>
-        <option value="0">Non</option> 
-    </select>
+        <input
+            type="text"
+            value="<?= htmlspecialchars($user['prenom']); ?>"
+            disabled
+        >
 
-    <br><br>
+        <input
+            type="email"
+            value="<?= htmlspecialchars($user['email']); ?>"
+            disabled
+        >
 
-    <button type="submit">Valider la commande</button>
+        <input
+            type="text"
+            value="<?= htmlspecialchars($user['telephone']); ?>"
+            disabled
+        >
 
-</form>
+        <!-- ERREURS -->
+
+        <?php if(isset($error)): ?>
+
+            <p style="color:red; font-weight:bold;">
+
+                <?= htmlspecialchars($error); ?>
+
+            </p>
+
+        <?php endif; ?>
+
+        <!-- SUCCESS -->
+
+        <?php if(isset($message)): ?>
+
+            <p style="color:green; font-weight:bold;">
+
+                <?= htmlspecialchars($message); ?>
+
+            </p>
+
+            <br>
+
+            <div
+                style="
+                    background:#f8f9fa;
+                    padding:20px;
+                    border-radius:10px;
+                "
+            >
+
+                <h3>Détail du prix</h3>
+
+                <p>
+                    Prix menus :
+                    <?= htmlspecialchars($prix_total); ?> €
+                </p>
+
+                <p>
+                    Livraison :
+                    <?= htmlspecialchars($prix_livraison); ?> €
+                </p>
+
+                <p style="font-size:24px;">
+
+                    <strong>
+                        Total :
+                        <?= htmlspecialchars($prix_final); ?> €
+                    </strong>
+
+                </p>
+
+            </div>
+
+        <?php endif; ?>
+
+        <!-- FORMULAIRE -->
+
+        <?php if(!isset($message)): ?>
+
+        <form method="POST">
+
+            <label>Date prestation :</label>
+
+            <input
+                type="date"
+                name="date_prestation"
+                min="<?= date('Y-m-d', strtotime('+2 days')); ?>"
+                required
+            >
+
+            <label>Adresse prestation :</label>
+
+            <input
+                type="text"
+                name="adresse_prestation"
+                required
+            >
+
+            <label>Ville prestation :</label>
+
+            <input
+                type="text"
+                name="ville_prestation"
+                required
+            >
+
+            <label>Lieu prestation :</label>
+
+            <input
+                type="text"
+                name="lieu_prestation"
+                required
+            >
+
+            <label>Heure livraison :</label>
+
+            <input
+                type="time"
+                name="heure_livraison"
+                required
+            >
+
+            <label>Nombre de personnes :</label>
+
+            <input
+                type="number"
+                name="nombre_personne"
+                min="<?= htmlspecialchars($menu['nombre_personne_minimum']); ?>"
+                required
+            >
+
+            <label>Prêt matériel :</label>
+
+            <select name="pret_materiel">
+
+                <option value="1">
+                    Oui
+                </option>
+
+                <option value="0">
+                    Non
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Valider la commande
+            </button>
+
+        </form>
+
+        <?php endif; ?>
+
+    </div>
+
+</div>
 
 <?php require_once __DIR__ . '/layout/footer.php'; ?>

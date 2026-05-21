@@ -4,12 +4,21 @@
 
     <div class="card">
 
-        <h1>Connexion</h1>
+        <h1>
+            Réinitialiser le mot de passe
+        </h1>
 
-        <?php if(isset($error)): ?>
+        <?php if(isset($message)): ?>
 
-            <p style="color:red;">
-                <?= htmlspecialchars($error); ?>
+            <p
+                style="
+                    color:green;
+                    font-weight:bold;
+                "
+            >
+
+                <?= htmlspecialchars($message); ?>
+
             </p>
 
         <?php endif; ?>
@@ -24,7 +33,7 @@
                 required
             >
 
-            <label>Mot de passe :</label>
+            <label>Nouveau mot de passe :</label>
 
             <input
                 type="password"
@@ -33,16 +42,10 @@
             >
 
             <button type="submit">
-                Se connecter
+
+                Réinitialiser
+
             </button>
-
-            <br><br>
-
-            <a href="?page=forgot-password">
-
-                Mot de passe oublié ?
-
-            </a>
 
         </form>
 
